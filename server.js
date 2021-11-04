@@ -11,8 +11,8 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
     path : '/socket.io',
     cors: {
-        origin: 'https://mern-client-gamma.vercel.app',
-        methods: ["GET", "POST"],
+        origin: '*',
+        methods: ["GET", "POST", "PUT"],
         allowedHeaders: ["Content-type"]
     }
 });
