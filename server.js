@@ -8,10 +8,6 @@ require('dotenv').config();
 
 const app = express();
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-});
-
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, { path: '/socket.io'}, {
     cors: {
