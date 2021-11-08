@@ -22,8 +22,7 @@ export const createPost = async (req, res) => {
 
         const postWithUser = await Post.findById(post._id).populate('postedBy', '-password -secret');
 
-        res.setHeader('Content-Type', 'application/json');
-        res.json(postWithUser);
+        res.json(JSON.stringify(postWithUser));
     } catch (e) {
         console.log(e);
         res.sendStatus(400);
