@@ -29,8 +29,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(function(req, res, next) {
-    res.setHeader("Content-Type", "application/json");
-    res.setHeader("Accept", "application/json");
+    req.setHeader("Content-Type", "application/json");
+    req.setHeader("Accept", "application/json");
 });
 
 readdirSync('./routes').map(r => app.use('/api', require(`./routes/${r}`)));
