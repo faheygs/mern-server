@@ -175,7 +175,7 @@ export const posts = async (req, res) => {
         .populate("comments.postedBy", "_id name image")
         .sort({ createdAt: -1 })
         .limit(12);
-        res.json(posts);
+        res.json(JSON.stringify(posts));
     } catch(e) {
         console.log(e);
     }
