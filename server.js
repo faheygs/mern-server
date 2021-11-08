@@ -27,7 +27,6 @@ mongoose.connect(process.env.DATABASE, {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.options('*', cors());
 
 readdirSync('./routes').map(r => app.use('/api', require(`./routes/${r}`)));
 
