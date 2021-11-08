@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(function(req, res, next) {
-    res.writeHead(200,{"Content-Type":"application/json"});
+    res.header["Content-Type", "application/json"];
     next();
 });
 
