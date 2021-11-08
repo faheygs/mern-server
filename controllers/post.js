@@ -24,7 +24,7 @@ export const createPost = async (req, res) => {
 
         res.json(postWithUser);
     } catch (e) {
-        console.log(e);
+        console.log("WHAT IS WRONG IDIOT", e);
         res.sendStatus(400);
     }
 };
