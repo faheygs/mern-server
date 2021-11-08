@@ -22,9 +22,9 @@ export const createPost = async (req, res) => {
 
         const postWithUser = await Post.findById(post._id).populate('postedBy', '-password -secret');
 
-        res.json(postWithUser);
+        res.json(post);
     } catch (e) {
-        console.log("WHAT IS WRONG IDIOT", e);
+        console.log(e);
         res.sendStatus(400);
     }
 };
