@@ -9,14 +9,14 @@ require('dotenv').config();
 const app = express();
 
 const http = require('http').createServer(app);
-const io = require('socket.io')(http, {
-    cors: {
-        origin: '*',
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-type"],
-        credentials: true
-    }
-});
+// const io = require('socket.io')(http, {
+//     cors: {
+//         origin: '*',
+//         methods: ["GET", "POST", "PUT", "DELETE"],
+//         allowedHeaders: ["Content-type"],
+//         credentials: true
+//     }
+// });
 
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
@@ -31,18 +31,18 @@ app.use(cors());
 
 readdirSync('./routes').map(r => app.use('/api', require(`./routes/${r}`)));
 
-io.on('connect', (socket) => {
-    socket.on('new-post', (newPost) => {
-        socket.broadcast.emit('new-post', newPost);
-    });
+// io.on('connect', (socket) => {
+//     socket.on('new-post', (newPost) => {
+//         socket.broadcast.emit('new-post', newPost);
+//     });
 
-    socket.on('new-message', (newMessage) => {
-        socket.broadcast.emit('new-message', newMessage);
-    });
-});
+//     socket.on('new-message', (newMessage) => {
+//         socket.broadcast.emit('new-message', newMessage);
+//     });
+// });
 
 const port = process.env.PORT || 8000;
 
-http.listen(port, () => {
+app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });
