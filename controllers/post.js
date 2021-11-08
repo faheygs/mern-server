@@ -16,6 +16,8 @@ export const createPost = async (req, res) => {
         })
     }
 
+    console.log(req.body);
+
     try {
         const post = new Post({ content, image, postedBy: req.user._id });
         await post.save();
