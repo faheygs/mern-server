@@ -28,10 +28,6 @@ mongoose.connect(process.env.DATABASE, {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use(function(req, res, next) {
-    req.setHeader("Content-Type", "application/json");
-    req.setHeader("Accept", "application/json");
-});
 
 readdirSync('./routes').map(r => app.use('/api', require(`./routes/${r}`)));
 
