@@ -26,7 +26,18 @@ mongoose.connect(process.env.DATABASE, {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.options('*', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+});
+app.use(cors({
+    "origin": "true",
+    "credentials": 'true',
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+  }));
 
 readdirSync('./routes').map(r => app.use('/api', require(`./routes/${r}`)));
 
